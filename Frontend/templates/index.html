@@ -3,11 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🤖Chat Bot</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles/style.css')}}">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <title>Chat Bot</title>
 </head>
 <body>
-    {% if page == 'home' %}
-        <h1> Hi! </h1>
+    {% if page == 'home' or page == 'chat' %}
+        
+        <div class="chat-main">
+            <div class="chat-list">
+                <ul>
+                    {% for id in chats %}
+                        <li><a href="/chat/{{id}}">Chat {{loop.index}}</a></li>
+                    {% endfor %}
+                        <li><a href="/">New Chat</a></li>
+    
+                </ul>
+            </div>
+            <div class="chat-page">
+                <div class="chat-section">
+    
+                    <div class="messages">
+                        
+        
+                    </div>
+        
+                    <div class="send-message">
+        
+                        <form action="/" method = "POST">
+                            <textarea name="message"></textarea>
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>    
+            </div>
+
+        </div>
+        
+        
+
+
+
     {% endif %}
 </body>
 </html>
